@@ -1,0 +1,2 @@
+﻿dotnet build
+C:\Users\soabdelwah\.nuget\packages\nunit.consolerunner\3.16.3\tools\nunit3-console.exe --labels=Before --out=TestResults.xml "--result=TestResults.xml;format=nunit2" .\bin\Debug\net6.0\spekflowlerning.dll
