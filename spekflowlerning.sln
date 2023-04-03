@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spekflowlerning", "spekflowlerning\spekflowlerning.csproj", "{9245A099-EB8C-478F-8D2B-BDDD5B89D37C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "spekflowlerning", "spekflowlerning\spekflowlerning.csproj", "{9245A099-EB8C-478F-8D2B-BDDD5B89D37C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResultBridge.Core", "ResultBridge.Core\ResultBridge.Core.csproj", "{DD962FC2-18C5-4B04-9C9F-9C999CE2F48D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResultBridgeCore.Tests", "ResultBridgeCore.Tests\ResultBridgeCore.Tests.csproj", "{8DCD42E8-0990-4670-BBBE-3F6E199999BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{9245A099-EB8C-478F-8D2B-BDDD5B89D37C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9245A099-EB8C-478F-8D2B-BDDD5B89D37C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9245A099-EB8C-478F-8D2B-BDDD5B89D37C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD962FC2-18C5-4B04-9C9F-9C999CE2F48D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD962FC2-18C5-4B04-9C9F-9C999CE2F48D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD962FC2-18C5-4B04-9C9F-9C999CE2F48D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD962FC2-18C5-4B04-9C9F-9C999CE2F48D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DCD42E8-0990-4670-BBBE-3F6E199999BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DCD42E8-0990-4670-BBBE-3F6E199999BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DCD42E8-0990-4670-BBBE-3F6E199999BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DCD42E8-0990-4670-BBBE-3F6E199999BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

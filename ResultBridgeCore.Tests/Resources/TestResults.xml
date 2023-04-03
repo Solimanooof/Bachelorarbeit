@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:/Workspace/spekflowlerning/spekflowlerning/bin/Debug/net6.0/spekflowlerning.dll" total="6" errors="0" failures="2" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2023-03-17" time="11:16:54">
+  <environment nunit-version="3.6.0.0" clr-version="4.0.30319.42000" os-version="Microsoft Windows NT 6.2.9200.0" platform="Win32NT" cwd="C:\Workspace\spekflowlerning\spekflowlerning" machine-name="BERN-C8WWK63" user="soabdelwah" user-domain="KSTG" />
+  <culture-info current-culture="de-DE" current-uiculture="de-DE" />
+  <test-suite type="Assembly" name="C:/Workspace/spekflowlerning/spekflowlerning/bin/Debug/net6.0/spekflowlerning.dll" executed="True" result="Failure" success="False" time="122.582" asserts="3">
+    <properties>
+      <property name="_PID" value="26596" />
+      <property name="_APPDOMAIN" value="nunit-agent" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+      <stack-trace />
+    </failure>
+    <results>
+      <test-suite type="SetUpFixture" name="[default namespace]" executed="True" result="Failure" success="False" time="122.577" asserts="3">
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+          <stack-trace />
+        </failure>
+        <results>
+          <test-suite type="TestSuite" name="spekflowlerning" executed="True" result="Failure" success="False" time="122.203" asserts="3">
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+              <stack-trace />
+            </failure>
+            <results>
+              <test-suite type="TestSuite" name="Features" executed="True" result="Failure" success="False" time="122.203" asserts="3">
+                <failure>
+                  <message><![CDATA[One or more child tests had errors]]></message>
+                  <stack-trace />
+                </failure>
+                <results>
+                  <test-suite type="TestFixture" name="_77OnlineshopFeature" description="77onlineshop" executed="True" result="Failure" success="False" time="122.202" asserts="3">
+                    <categories>
+                      <category name="firefox-77" />
+                    </categories>
+                    <properties>
+                      <property name="Description" value="77onlineshop" />
+                    </properties>
+                    <failure>
+                      <message><![CDATA[One or more child tests had errors]]></message>
+                      <stack-trace />
+                    </failure>
+                    <results>
+                      <test-case name="spekflowlerning.Features._77OnlineshopFeature.ClickAnmeldenWithoutIputAnData" description="click anmelden without iput an data" executed="True" result="Success" success="True" time="25.880" asserts="1">
+                        <categories>
+                          <category name="TcID_1234556" />
+                        </categories>
+                        <properties>
+                          <property name="Description" value="click anmelden without iput an data" />
+                        </properties>
+                      </test-case>
+                      <test-case name="spekflowlerning.Features._77OnlineshopFeature.ClickRadioButtonOnLogInPage" description="click radio Button on log in page" executed="True" result="Failure" success="False" time="24.438" asserts="1">
+                        <categories>
+                          <category name="TcID_123445" />
+                        </categories>
+                        <properties>
+                          <property name="Description" value="click radio Button on log in page" />
+                        </properties>
+                        <failure>
+                          <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                          <stack-trace><![CDATA[   at spekflowlerning.StepDefinitions._77OnlineshopStepDefinitions.ThenICanSeeTextboxesOfSingUp() in C:\Workspace\spekflowlerning\spekflowlerning\StepDefinitions\_77OnlineshopStepDefinitions.cs:line 88
+   at TechTalk.SpecFlow.Bindings.BindingInvoker.InvokeBinding(IBinding binding, IContextManager contextManager, Object[] arguments, ITestTracer testTracer, TimeSpan& duration)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments, TimeSpan& duration)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStep(IContextManager contextManager, StepInstance stepInstance)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnAfterLastStep()
+   at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors()
+   at spekflowlerning.Features._77OnlineshopFeature.ScenarioCleanup()
+   at spekflowlerning.Features._77OnlineshopFeature.ClickRadioButtonOnLogInPage() in C:\Workspace\spekflowlerning\spekflowlerning\Features\77onlineshop.feature:line 27
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="spekflowlerning.Features._77OnlineshopFeature.EnterAnRightEmailAdress" description="enter an right email adress" executed="True" result="Success" success="True" time="27.573" asserts="0">
+                        <categories>
+                          <category name="TcID_1234548" />
+                        </categories>
+                        <properties>
+                          <property name="Description" value="enter an right email adress" />
+                        </properties>
+                      </test-case>
+                      <test-case name="spekflowlerning.Features._77OnlineshopFeature.OpenKidsPage" description="open kids page" executed="True" result="Success" success="True" time="17.903" asserts="0">
+                        <categories>
+                          <category name="TcID_12325" />
+                        </categories>
+                        <properties>
+                          <property name="Description" value="open kids page" />
+                        </properties>
+                      </test-case>
+                      <test-case name="spekflowlerning.Features._77OnlineshopFeature.OpenLoginPage" description="open login Page" executed="True" result="Failure" success="False" time="15.732" asserts="1">
+                        <categories>
+                          <category name="TcID_123485" />
+                        </categories>
+                        <properties>
+                          <property name="Description" value="open login Page" />
+                        </properties>
+                        <failure>
+                          <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                          <stack-trace><![CDATA[   at spekflowlerning.StepDefinitions._77OnlineshopStepDefinitions.ThenLoginPageIsOpend() in C:\Workspace\spekflowlerning\spekflowlerning\StepDefinitions\_77OnlineshopStepDefinitions.cs:line 73
+   at TechTalk.SpecFlow.Bindings.BindingInvoker.InvokeBinding(IBinding binding, IContextManager contextManager, Object[] arguments, ITestTracer testTracer, TimeSpan& duration)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments, TimeSpan& duration)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStep(IContextManager contextManager, StepInstance stepInstance)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnAfterLastStep()
+   at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors()
+   at spekflowlerning.Features._77OnlineshopFeature.ScenarioCleanup()
+   at spekflowlerning.Features._77OnlineshopFeature.OpenLoginPage() in C:\Workspace\spekflowlerning\spekflowlerning\Features\77onlineshop.feature:line 21
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="spekflowlerning.Features._77OnlineshopFeature.OpenTheWebsite" description="open the website" executed="True" result="Success" success="True" time="10.672" asserts="0">
+                        <categories>
+                          <category name="TcID_12345" />
+                        </categories>
+                        <properties>
+                          <property name="Description" value="open the website" />
+                        </properties>
+                      </test-case>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
