@@ -21,5 +21,7 @@ namespace ResultBridgeCore.Tests.Core
             Assert.That(importedTestResult.Name, Is.EqualTo("TestResults.xml"));
             Assert.That(importedTestResult.FilePath, Is.EqualTo(testResultsFilePath));
         }
+
+
     }
 }

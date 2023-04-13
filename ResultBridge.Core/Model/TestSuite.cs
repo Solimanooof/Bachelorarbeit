@@ -3,6 +3,7 @@ using System.Xml.Serialization;
 
 namespace ResultBridge.Core.Model
 {
+    [XmlRoot(elementName: "test-suite")]
     public class TestSuite
     {
         [XmlAttribute(AttributeName = "type")]
@@ -16,7 +17,9 @@ namespace ResultBridge.Core.Model
 
         [XmlAttribute(AttributeName = "result")]
         public Result Result { get; private set; }
+        [XmlAttribute("success")]
         public bool WasSuccessful { get; private set; }
+        [XmlElement("test-case")]
         public IList<TestCase> TestCases { get; private set; }
     }
 }

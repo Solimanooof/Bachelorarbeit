@@ -1,4 +1,7 @@
-﻿using ResultBridge.Core.Model.Import;
+﻿using System;
+using System.IO;
+using System.Xml.Serialization;
+using ResultBridge.Core.Model.Import;
 
 namespace ResultBridge.Core.Core
 {
@@ -6,7 +9,9 @@ namespace ResultBridge.Core.Core
     {
         public TestResultFile ImportTestResult(string path)
         {
-            throw new System.NotImplementedException();
+            String Name = Path.GetFileName(path);
+            TestResultFile testResultFile = new TestResultFile(path, Name);
+            return testResultFile;
         }
     }
 }

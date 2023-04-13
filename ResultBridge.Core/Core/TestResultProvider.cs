@@ -1,4 +1,7 @@
-﻿using ResultBridge.Core.Model;
+﻿using System;
+using System.IO;
+using System.Xml.Serialization;
+using ResultBridge.Core.Model;
 using ResultBridge.Core.Model.Import;
 
 namespace ResultBridge.Core.Core
@@ -7,7 +10,17 @@ namespace ResultBridge.Core.Core
     {
         public TestResults CreateTestResultsFrom(TestResultFile testResultFile)
         {
-            throw new System.NotImplementedException();
+            string xmlContent = File.ReadAllText(testResultFile.FilePath + @"\" + testResultFile.Name);
+
+            XmlSerializer serializer = new XmlSerializer(typeof(TestResultFile));
+
+            using (TextReader reader = new StringReader(xmlContent))
+            {
+                TestResults testResults = new TestResults();
+                testResults = (TestResults)serializer.Deserialize(reader);
+                return testResults ?? new TestResults();
+            }
+
         }
     }
 }

@@ -1,5 +1,8 @@
-﻿namespace ResultBridge.Core.Model.Import
+﻿using System.Xml.Serialization;
+
+namespace ResultBridge.Core.Model.Import
 {
+
     public class TestResultFile
     {
         public string FilePath { get; }
