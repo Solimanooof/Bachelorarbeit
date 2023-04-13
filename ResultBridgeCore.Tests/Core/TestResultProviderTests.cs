@@ -1,10 +1,9 @@
 ﻿using NUnit.Framework;
 using ResultBridge.Core.Core;
-using ResultBridgeCore.Tests.Utils;
-using ResultBridge.Core.Model.Import;
-using System;
-using System.IO;
 using ResultBridge.Core.Model;
+using ResultBridge.Core.Model.Import;
+using ResultBridgeCore.Tests.Utils;
+using System.IO;
 
 namespace ResultBridgeCore.Tests.Core
 {
@@ -20,11 +19,12 @@ namespace ResultBridgeCore.Tests.Core
             TestResultFile testResultFile = new TestResultFile(Path.GetFullPath(testResultsFilePath), Path.GetFileName(testResultsFilePath));
 
             // Act
-            TestResults testResults = provider.CreateTestResultsFrom(testResultFile);
+            TestSuite testSuite = provider.CreateTestResultsFrom(testResultFile);
 
             // Assert
-            Assert.IsNotNull(testResults);
-            Assert.IsInstanceOf<TestResults>(testResults);
+            Assert.IsNotNull(testSuite);
+            Assert.IsInstanceOf<TestSuite>(testSuite);
+            Assert.That(testSuite.Name, Is.EqualTo("_77OnlineshopFeature"));
         }
     }
 }

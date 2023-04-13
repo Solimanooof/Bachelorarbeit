@@ -7,16 +7,20 @@ namespace ResultBridge.Core.Model
     public class TestCase
     {
         [XmlAttribute("name")]
-        public string Name { get; private set; }
+        public string Name { get; set; }
         [XmlAttribute("description")]
-        public string Description { get; private set; }
+        public string Description { get; set; }
         [XmlAttribute("executed")]
-        public bool WasExecuted { get; private set; }
+        public bool WasExecuted { get; set; }
         [XmlAttribute("result")]
-        public Result Result { get; private set; }
+        public TestResult TestResult { get; set; }
         [XmlAttribute("success")]
-        public bool WasSuccessful { get; private set; }
+        public bool WasSuccessful { get; set; }
         [XmlElement("categories")]
-        public IList<Category> Categories { get; private set; }
+        public List<Category> Categories { get; set; }
+
+        public TestCase()
+        {
+        }
     }
 }

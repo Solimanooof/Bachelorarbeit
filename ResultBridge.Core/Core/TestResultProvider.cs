@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Xml;
 using System.Xml.Serialization;
 using ResultBridge.Core.Model;
 using ResultBridge.Core.Model.Import;
@@ -8,17 +11,22 @@ namespace ResultBridge.Core.Core
 {
     public class TestResultProvider : ITestResultProvider
     {
-        public TestResults CreateTestResultsFrom(TestResultFile testResultFile)
+        public TestSuite CreateTestResultsFrom(TestResultFile testResultFile)
         {
-            string xmlContent = File.ReadAllText(testResultFile.FilePath + @"\" + testResultFile.Name);
+            string xmlContent = File.ReadAllText(testResultFile.FilePath);
 
-            XmlSerializer serializer = new XmlSerializer(typeof(TestResultFile));
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.LoadXml(xmlContent);
 
-            using (TextReader reader = new StringReader(xmlContent))
+            XmlNodeList? nodes = xmlDocument.SelectNodes("*//test-suite[@type='TestFixture']");
+            string testResultsXml = nodes?.Item(0).OuterXml;
+
+            XmlSerializer serializer = new XmlSerializer(typeof(TestSuite));
+
+            using (TextReader reader = new StringReader(testResultsXml))
             {
-                TestResults testResults = new TestResults();
-                testResults = (TestResults)serializer.Deserialize(reader);
-                return testResults ?? new TestResults();
+                TestSuite testSuites = (TestSuite)serializer.Deserialize(reader);
+                return testSuites ?? new TestSuite();
             }
 
         }

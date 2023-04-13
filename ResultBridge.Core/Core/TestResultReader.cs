@@ -9,8 +9,8 @@ namespace ResultBridge.Core.Core
     {
         public TestResultFile ImportTestResult(string path)
         {
-            String Name = Path.GetFileName(path);
-            TestResultFile testResultFile = new TestResultFile(path, Name);
+            var name = Path.GetFileName(path);
+            TestResultFile testResultFile = new TestResultFile(path, name);
             return testResultFile;
         }
     }

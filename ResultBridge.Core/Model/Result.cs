@@ -1,12 +1,19 @@
-﻿using System.Xml.Serialization;
+﻿using System.Collections.Generic;
+using System.Xml.Serialization;
 
-namespace ResultBridge.Core.Model
+namespace ResultBridge.Core.Model;
+
+public class Result
 {
-    public enum Result
+    [XmlElement(ElementName = "test-case")]
+    List<TestCase> TestCases { get; set; }
+
+    public Result()
     {
-        [XmlEnum(Name = "Failure")]
-        Failure,
-        [XmlEnum(Name = "Success")]
-        Success
+    }
+
+    public Result(List<TestCase> testCases)
+    {
+        TestCases = testCases;
     }
 }
