@@ -3,23 +3,62 @@ using System.Xml.Serialization;
 
 namespace ResultBridge.Core.Model
 {
-    [XmlRoot(elementName: "test-suite")]
+    [XmlRootAttribute(ElementName = "test-suite", Namespace = "", DataType = "object", IsNullable = false)]
     public class TestSuite
     {
         [XmlAttribute(AttributeName = "type")]
         public TestSuiteType Type { get; set; }
 
         [XmlAttribute(AttributeName = "name")]
-        public string Name { get; private set; }
+        public string Name { get; set; }
+
+        [XmlIgnore]
+        public bool WasExecuted { get; set; }
 
         [XmlAttribute(AttributeName = "executed")]
-        public bool WasExecuted { get; private set; }
+        public string ExecutedSerialize
+        {
+            get => WasExecuted.ToString();
+            set
+            {
+                if (value is "True")
+                {
+                    WasExecuted = true;
+                }
+                else if (value is "False")
+                {
+                    WasExecuted = false;
+                }
+            }
+        }
 
         [XmlAttribute(AttributeName = "result")]
-        public Result Result { get; private set; }
+        public TestResult TestResult { get; set; }
+        [XmlIgnore]
+        public bool WasSuccessful { get; set; }
+
         [XmlAttribute("success")]
-        public bool WasSuccessful { get; private set; }
+        public string SuccessfulSerialize
+        {
+            get => WasSuccessful.ToString();
+            set
+            {
+                if (value is "True")
+                {
+                    WasSuccessful = true;
+                }
+                else if (value is "False")
+                {
+                    WasSuccessful = false;
+                }
+            }
+        }
+
         [XmlElement("test-case")]
-        public IList<TestCase> TestCases { get; private set; }
+        public List<Result> TestCases { get; set; }
+
+        public TestSuite()
+        {
+        }
     }
 }

@@ -6,6 +6,10 @@ namespace ResultBridge.Core.Model
     public class Category
     {
         [XmlAttribute("name")]
-        public string Name { get; private set; }
+        public string Name { get; set; }
+
+        public Category()
+        {
+        }
     }
 }

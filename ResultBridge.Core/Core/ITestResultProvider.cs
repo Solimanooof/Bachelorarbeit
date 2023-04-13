@@ -1,4 +1,5 @@
-﻿using ResultBridge.Core.Model;
+﻿using System.Collections.Generic;
+using ResultBridge.Core.Model;
 using ResultBridge.Core.Model.Import;
 
 namespace ResultBridge.Core.Core
@@ -9,6 +10,6 @@ namespace ResultBridge.Core.Core
     /// </summary>
     public interface ITestResultProvider
     {
-        TestResults CreateTestResultsFrom(TestResultFile testResultFile);
+        TestSuite CreateTestResultsFrom(TestResultFile testResultFile);
     }
 }
