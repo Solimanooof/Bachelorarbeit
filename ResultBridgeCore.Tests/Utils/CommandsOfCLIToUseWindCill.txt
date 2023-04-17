@@ -1,0 +1,20 @@
+﻿possible prefixes are `aa`, `si` , `im` and `integrity` it could be used like these Examples 
+
+man imabout
+man im_about
+man "im about"
+
+
+`-P`  to specify the Project. 
+`-S`  to specify the sandbox هي بيئة عمل معزولة يمكن للمطورين استخدامها 
+`#` keyword specifies the well-formed project or subproject name
+`#a` date of project configuration
+`#d` develpment path name 
+`#s'  keyword specifies the subproject in a poorly-formed project tree
+
+
+
+###connect to windChill 
+im connect --hostname=value  --pot= value  --password=value --user=value
+OR
+si connect 
