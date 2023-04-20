@@ -1,31 +1,49 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System;
 using ResultBridge.Core.Model;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace ResultBridge.Core.Core
 {
     public class TestResultImporter : ITestResultImporter
     {
+        public event EventHandler? TestResultImportStarted;
+        public event EventHandler<TestResultImportFinishedEventArgs>? TestResultImportFinished;
+        public event EventHandler? TestResultImportFailed;
+
         public void SyncResultsToWindchill(IList<TestCase> testResults)
         {
-            throw new System.NotImplementedException();
+            // Todo
+            // 1. Alle IDs aus der Liste von Ergebnisse auslesen
+            // 2. Für jedes Element muss ein Testergebnisse nach WindchillConnector übertragen werden
+            //    2.1 Anhand des Testergebnis muss entschieden werden, welches Testergebnis in
+            //        WindchillConnector gesetzt werden muss (unterschiedliche Werte müssen via `im.exe`
+            //        gesetzt werden)
+            //    2.2 Prüfen, ob es beim Import einen Fehler gab
+            // 3. Auswerten, ob Import erfolgreich oder nicht
+
+
+            foreach (var testCase in testResults)
+            {
+                TestResultImportStarted?.Invoke(this, EventArgs.Empty);
+                string name = testCase.Name;
+                string description = testCase.Description;
+                bool wasExecuted = testCase.WasExecuted;
+                TestResult testResult = testCase.TestResult;
+                bool wasSuccessful = testCase.WasSuccessful;
+
+                foreach (var category in testCase.Categories)
+                {
+                    // Read category properties here if needed
+                }
+
+                TestResultImportFinished?.Invoke(this, new TestResultImportFinishedEventArgs(0));
+            }
+
         }
 
-        public void ConnectToWindChill(string path, string user, string password, string hostname, string port)
-        {
-            string cmdPath = @path + @"\im.exe";
-            string cmdArgToLoginToWindChill = "connect" + " --user=" + user + " --password=" + password + " --port=" +
-                                              port + " --hotname=" + hostname;
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = cmdPath;
-            startInfo.Arguments = cmdArgToLoginToWindChill;
-            startInfo.UseShellExecute = false;
-            startInfo.RedirectStandardOutput = true;
-            Process process = new Process();
-            process.StartInfo = startInfo;
-            process.Start();
-            process.WaitForExit();
-        }
+
+
     }
 
 
