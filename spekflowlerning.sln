@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "spekflowlerning", "spekflow
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResultBridge.Core", "ResultBridge.Core\ResultBridge.Core.csproj", "{DD962FC2-18C5-4B04-9C9F-9C999CE2F48D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResultBridgeCore.Tests", "ResultBridgeCore.Tests\ResultBridgeCore.Tests.csproj", "{8DCD42E8-0990-4670-BBBE-3F6E199999BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResultBridgeCore.Tests", "ResultBridgeCore.Tests\ResultBridgeCore.Tests.csproj", "{8DCD42E8-0990-4670-BBBE-3F6E199999BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResultBridge.GUI", "Result to WindChill\ResultBridge.GUI.csproj", "{8875D89F-6A81-4E5D-83EA-F7BE1068ABE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{8DCD42E8-0990-4670-BBBE-3F6E199999BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DCD42E8-0990-4670-BBBE-3F6E199999BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DCD42E8-0990-4670-BBBE-3F6E199999BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8875D89F-6A81-4E5D-83EA-F7BE1068ABE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8875D89F-6A81-4E5D-83EA-F7BE1068ABE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8875D89F-6A81-4E5D-83EA-F7BE1068ABE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8875D89F-6A81-4E5D-83EA-F7BE1068ABE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

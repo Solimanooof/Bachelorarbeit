@@ -61,7 +61,7 @@ public class WindchillConnector : IWindchillConnector
         }
     }
 
-    private string BuildConnectCommand(string userName, string password)
+    public string BuildConnectCommand(string userName, string password)
     {
         return $"connect --user={userName} --password={password} --port={Port} --hostname={HostName}";
     }
@@ -87,6 +87,6 @@ public class WindchillConnector : IWindchillConnector
 
     private string BuildDisconnectCommand()
     {
-        return "disconnect";
+        return "disconnect --no confirm";
     }
 }
