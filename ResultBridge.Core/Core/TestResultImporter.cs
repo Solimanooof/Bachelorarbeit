@@ -1,6 +1,7 @@
 ﻿using System;
 using ResultBridge.Core.Model;
 using System.Collections.Generic;
+using ResultBridge.Core.Model.Import;
 using System.Diagnostics;
 
 namespace ResultBridge.Core.Core
@@ -11,6 +12,17 @@ namespace ResultBridge.Core.Core
         public event EventHandler<TestResultImportFinishedEventArgs>? TestResultImportFinished;
         public event EventHandler? TestResultImportFailed;
 
+        private ITestResultProvider TestResultProvider;
+
+        public TestResultImporter(ITestResultProvider testResultProvider)
+        {
+            TestResultProvider = testResultProvider;
+        }
+
+        public TestResultImporter()
+        {
+
+        }
         public void SyncResultsToWindchill(IList<TestCase> testResults)
         {
             // Todo
@@ -21,7 +33,6 @@ namespace ResultBridge.Core.Core
             //        gesetzt werden)
             //    2.2 Prüfen, ob es beim Import einen Fehler gab
             // 3. Auswerten, ob Import erfolgreich oder nicht
-
 
             foreach (var testCase in testResults)
             {
@@ -34,17 +45,10 @@ namespace ResultBridge.Core.Core
 
                 foreach (var category in testCase.Categories)
                 {
-                    // Read category properties here if needed
+                    string testCaseID = category.Name;
                 }
-
                 TestResultImportFinished?.Invoke(this, new TestResultImportFinishedEventArgs(0));
             }
-
         }
-
-
-
     }
-
-
 }

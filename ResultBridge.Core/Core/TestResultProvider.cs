@@ -11,6 +11,8 @@ namespace ResultBridge.Core.Core
 {
     public class TestResultProvider : ITestResultProvider
     {
+
+
         public TestSuite CreateTestResultsFrom(TestResultFile testResultFile)
         {
             string xmlContent = File.ReadAllText(testResultFile.FilePath);
@@ -26,9 +28,14 @@ namespace ResultBridge.Core.Core
             using (TextReader reader = new StringReader(testResultsXml))
             {
                 TestSuite testSuites = (TestSuite)serializer.Deserialize(reader);
+                //OnTestSuitDeserializedFromXmlFile(testSuites);
                 return testSuites ?? new TestSuite();
             }
 
         }
+
+
     }
+
+
 }

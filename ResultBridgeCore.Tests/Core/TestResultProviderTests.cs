@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 using ResultBridge.Core.Core;
 using ResultBridge.Core.Model;
 using ResultBridge.Core.Model.Import;
@@ -20,11 +21,15 @@ namespace ResultBridgeCore.Tests.Core
 
             // Act
             TestSuite testSuite = provider.CreateTestResultsFrom(testResultFile);
+            List<Result> result = testSuite.Results;
+
+
 
             // Assert
             Assert.IsNotNull(testSuite);
             Assert.IsInstanceOf<TestSuite>(testSuite);
             Assert.That(testSuite.Name, Is.EqualTo("_77OnlineshopFeature"));
+            Assert.That(testSuite.Results, Is.Not.Empty);
         }
     }
 }

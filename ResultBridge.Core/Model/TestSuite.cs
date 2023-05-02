@@ -54,8 +54,8 @@ namespace ResultBridge.Core.Model
             }
         }
 
-        [XmlElement("test-case")]
-        public List<Result> TestCases { get; set; }
+        [XmlElement("results")]
+        public List<Result> Results { get; set; }
 
         public TestSuite()
         {

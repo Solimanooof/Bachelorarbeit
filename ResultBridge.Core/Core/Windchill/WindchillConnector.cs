@@ -43,10 +43,17 @@ public class WindchillConnector : IWindchillConnector
         process.StartInfo = startInfo;
 
         process.Start();
+        string output = process.StandardOutput.ReadToEnd();
+        GetFeedbackFromCommand(output);
         process.WaitForExit();
         return process.ExitCode;
     }
 
+    public string GetFeedbackFromCommand(string output)
+    {
+        string feedbackFromCommand = output;
+        return feedbackFromCommand;
+    }
     public void Connect(string userName, string password)
     {
         string connectCommand = BuildConnectCommand(userName, password);

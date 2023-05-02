@@ -6,7 +6,7 @@ namespace ResultBridge.Core.Model;
 public class Result
 {
     [XmlElement(ElementName = "test-case")]
-    List<TestCase> TestCases { get; set; }
+    public List<TestCase> TestCases { get; set; }
 
     public Result()
     {

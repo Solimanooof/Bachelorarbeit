@@ -10,6 +10,10 @@
         {
         }
 
+        public TestResultFile(string filePath)
+        {
+
+        }
         public TestResultFile(string filePath, string name)
         {
             FilePath = filePath;
