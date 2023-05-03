@@ -77,11 +77,11 @@ namespace spekflowlerning.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("open the website")]
-        [NUnit.Framework.CategoryAttribute("TcID_12345")]
+        [NUnit.Framework.CategoryAttribute("TcID_1359212")]
         public void OpenTheWebsite()
         {
             string[] tagsOfScenario = new string[] {
-                    "TcID_12345"};
+                    "TcID_1359212"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("open the website", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 8
@@ -106,11 +106,11 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("open kids page")]
-        [NUnit.Framework.CategoryAttribute("TcID_12325")]
+        [NUnit.Framework.CategoryAttribute("TcID_1359213")]
         public void OpenKidsPage()
         {
             string[] tagsOfScenario = new string[] {
-                    "TcID_12325"};
+                    "TcID_1359213"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("open kids page", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 13
@@ -138,11 +138,11 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("open login Page")]
-        [NUnit.Framework.CategoryAttribute("TcID_123485")]
+        [NUnit.Framework.CategoryAttribute("TcID_1359214")]
         public void OpenLoginPage()
         {
             string[] tagsOfScenario = new string[] {
-                    "TcID_123485"};
+                    "TcID_1359214"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("open login Page", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 18
@@ -170,11 +170,11 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("click radio Button on log in page")]
-        [NUnit.Framework.CategoryAttribute("TcID_123445")]
+        [NUnit.Framework.CategoryAttribute("TcID_1359215")]
         public void ClickRadioButtonOnLogInPage()
         {
             string[] tagsOfScenario = new string[] {
-                    "TcID_123445"};
+                    "TcID_1359215"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("click radio Button on log in page", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 23
@@ -205,11 +205,11 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("click anmelden without iput an data")]
-        [NUnit.Framework.CategoryAttribute("TcID_1234556")]
+        [NUnit.Framework.CategoryAttribute("TcID_1380894")]
         public void ClickAnmeldenWithoutIputAnData()
         {
             string[] tagsOfScenario = new string[] {
-                    "TcID_1234556"};
+                    "TcID_1380894"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("click anmelden without iput an data", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 29
@@ -243,11 +243,11 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("enter an right email adress")]
-        [NUnit.Framework.CategoryAttribute("TcID_1234548")]
+        [NUnit.Framework.CategoryAttribute("TcID_1380896")]
         public void EnterAnRightEmailAdress()
         {
             string[] tagsOfScenario = new string[] {
-                    "TcID_1234548"};
+                    "TcID_1380896"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("enter an right email adress", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 36

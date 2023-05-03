@@ -7,6 +7,9 @@ namespace ResultBridge.Core.Model
         [XmlEnum(Name = "Failure")]
         Failure,
         [XmlEnum(Name = "Success")]
-        Success
+        Success,
+        [XmlEnum(Name = "Error")]
+        Error
+
     }
 }

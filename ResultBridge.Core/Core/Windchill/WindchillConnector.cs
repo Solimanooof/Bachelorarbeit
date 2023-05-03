@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace ResultBridge.Core.Core.Windchill;
 
@@ -23,15 +24,15 @@ public class WindchillConnector : IWindchillConnector
 
     private int ExecuteImProcess(string arguments)
     {
-        return StartProcess(ImProgramName, arguments);
+        return StartProcess(ImProgramName, arguments).Result;
     }
 
     private int ExecuteTmProcess(string arguments)
     {
-        return StartProcess(TmProgramName, arguments);
+        return StartProcess(TmProgramName, arguments).Result;
     }
 
-    private int StartProcess(string executableNameOrPath, string arguments)
+    private Task<int> StartProcess(string executableNameOrPath, string arguments)
     {
         var process = new Process();
         var startInfo = new ProcessStartInfo();
@@ -46,7 +47,7 @@ public class WindchillConnector : IWindchillConnector
         string output = process.StandardOutput.ReadToEnd();
         GetFeedbackFromCommand(output);
         process.WaitForExit();
-        return process.ExitCode;
+        return Task.FromResult(process.ExitCode);
     }
 
     public string GetFeedbackFromCommand(string output)

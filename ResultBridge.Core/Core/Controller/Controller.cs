@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
+using System.Diagnostics;
 using System.Reflection.Metadata;
 using ResultBridge.Core.Core.Windchill;
 using ResultBridge.Core.Model;
@@ -22,6 +24,10 @@ class Controller : IController
     {
         windchillConnector = new WindchillConnector(hostName, port);
         windchillConnector.Connect(userName, passWord);
+        windchillConnector.OnCommandFailed += (s, ev) => { };
+        windchillConnector.OnConnected += (s, ev) => { };
+
+
     }
     public void DisconnectToWindChill()
     {
