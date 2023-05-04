@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace ResultBridge.Core.Model
+namespace ResultBridge.Core.Model.TestResults
 {
     [XmlRoot(elementName: "categories")]
     public class Category

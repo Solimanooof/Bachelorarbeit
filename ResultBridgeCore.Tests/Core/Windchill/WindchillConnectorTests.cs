@@ -2,22 +2,39 @@
 using ResultBridge.Core.Core.Windchill;
 using ResultBridgeCore.Tests.Utils;
 using System;
+using System.Threading;
+using ResultBridge.Core.Model;
+using ResultBridge.Core.Model.Windchill;
 
 namespace ResultBridgeCore.Tests.Core.Windchill
 {
     [TestFixture]
     public class WindchillConnectorTests
     {
+        //[SetUp]
+        //public void Setup()
+        //{
+        //    var windchillConfiguration = new WindchillConfiguration("emea-integrity.karlstorz.com", 7001);
+        //    var userCredentials = new UserCredentials("soabdelwah", "12363");
+        //    // Arrange
+        //    var windchillConnector = new WindchillConnector(windchillConfiguration, userCredentials);
+        //    windchillConnector.Disconnect();
+        //}
+
         [Test]
-        public void Connect_StateUnderTest_ExpectedBehavior()
+        public void CallingConnect_WhenWrongUserDetails_ThanOnConnectedIsNotCalledAndCommandFileIsCalled()
         {
+            var windchillConfiguration = new WindchillConfiguration("emea-integrity.karlstorz.com", 7001);
+            var userCredentials = new UserCredentials("soabdelwah", "12363");
             // Arrange
-            var windchillConnector = new WindchillConnector("emea-integrity.karlstorz.com", 7001);
+            var windchillConnector = new WindchillConnector(windchillConfiguration, userCredentials);
             string userName = "soabdelwah";
             string password = "12363";
 
-            bool connectedEventRaised = false;
-            windchillConnector.OnConnected += (sender, args) => connectedEventRaised = true;
+            var onConnectedEventCalled = new AutoResetEvent(false);
+            windchillConnector.OnConnected += (sender, args) => onConnectedEventCalled.Set();
+            var onCommandFailedEventCalled = new AutoResetEvent(false);
+            windchillConnector.OnCommandFailed += (sender, args) => onCommandFailedEventCalled.Set();
 
             // Act
             windchillConnector.Connect(
@@ -25,14 +42,17 @@ namespace ResultBridgeCore.Tests.Core.Windchill
                 password);
 
             // Assert
-            Assert.IsTrue(connectedEventRaised);
+            Assert.IsFalse(onConnectedEventCalled.WaitOne(TimeSpan.FromSeconds(30)));
+            Assert.IsTrue(onCommandFailedEventCalled.WaitOne(TimeSpan.FromSeconds(30)));
         }
 
         [Test]
         public void SetTestResultFor_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var windchillConnector = new WindchillConnector("emea-integrity.karlstorz.com", 7001);
+            var windchillConfiguration = new WindchillConfiguration("emea-integrity.karlstorz.com", 7001);
+            var userCredentials = new UserCredentials("soabdelwah", "12363");
+            var windchillConnector = new WindchillConnector(windchillConfiguration, userCredentials);
             string caseId = "12236";
             string result = "pass";
             string sessionId = "25893";
@@ -60,7 +80,9 @@ namespace ResultBridgeCore.Tests.Core.Windchill
         public void Disconnect_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var windchillConnector = new WindchillConnector("emea-integrity.karlstorz.com", 7001);
+            var windchillConfiguration = new WindchillConfiguration("emea-integrity.karlstorz.com", 7001);
+            var userCredentials = new UserCredentials("soabdelwah", "12363");
+            var windchillConnector = new WindchillConnector(windchillConfiguration, userCredentials);
 
             bool disconnectedEventRaised = false;
             windchillConnector.OnDisconnected += (sender, args) => disconnectedEventRaised = true;

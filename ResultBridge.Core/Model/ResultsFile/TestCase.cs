@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace ResultBridge.Core.Model
+namespace ResultBridge.Core.Model.TestResults
 {
     [XmlRoot(elementName: "test-case")]
     public class TestCase
@@ -33,24 +33,9 @@ namespace ResultBridge.Core.Model
 
         [XmlAttribute("result")]
         public TestResult TestResult { get; set; }
-        [XmlIgnore]
-        public bool WasSuccessful { get; set; }
+
         [XmlAttribute("success")]
-        public string SuccessfulSerialize
-        {
-            get => WasSuccessful.ToString();
-            set
-            {
-                if (value is "True")
-                {
-                    WasSuccessful = true;
-                }
-                else if (value is "False")
-                {
-                    WasSuccessful = false;
-                }
-            }
-        }
+        public string Successful { get; set; }
 
         [XmlElement("categories")]
         public List<Category> Categories { get; set; }

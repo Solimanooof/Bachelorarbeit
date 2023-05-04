@@ -11,6 +11,8 @@ public interface IWindchillConnector
 
     public string HostName { get; set; }
     public int Port { get; set; }
+
+    bool IsConnected();
     void Connect(string userName, string password);
     void SetTestResultFor(string caseId, string result, string sessionId);
     void Disconnect();

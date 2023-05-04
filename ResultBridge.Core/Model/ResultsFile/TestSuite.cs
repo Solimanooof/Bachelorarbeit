@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace ResultBridge.Core.Model
+namespace ResultBridge.Core.Model.TestResults
 {
-    [XmlRootAttribute(ElementName = "test-suite", Namespace = "", DataType = "object", IsNullable = false)]
+    [XmlRoot(ElementName = "test-suite", Namespace = "", DataType = "object", IsNullable = false)]
     public class TestSuite
     {
         [XmlAttribute(AttributeName = "type")]

@@ -1,6 +1,6 @@
 ﻿using ResultBridge.Core.Model.Import;
 
-namespace ResultBridge.Core.Core
+namespace ResultBridge.Core.Core.TestImport
 {
     /// <summary>
     /// Reads in content of TestResult.xml and provides

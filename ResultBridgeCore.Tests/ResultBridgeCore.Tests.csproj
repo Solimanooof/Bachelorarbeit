@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Core\Windchill\" />
     <Folder Include="Utils\" />
   </ItemGroup>
 

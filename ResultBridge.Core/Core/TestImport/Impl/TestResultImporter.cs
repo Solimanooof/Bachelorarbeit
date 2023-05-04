@@ -1,29 +1,37 @@
 ﻿using System;
-using ResultBridge.Core.Model;
 using System.Collections.Generic;
-using ResultBridge.Core.Model.Import;
-using System.Diagnostics;
+using System.Linq;
+using ResultBridge.Core.Core.Windchill;
+using ResultBridge.Core.Model;
+using ResultBridge.Core.Model.TestResults;
+using ResultBridge.Core.Model.Windchill;
 
-namespace ResultBridge.Core.Core
+namespace ResultBridge.Core.Core.TestImport.Impl
 {
     public class TestResultImporter : ITestResultImporter
     {
+        public WindchillConfiguration Configuration { get; }
+        public UserCredentials Credentials { get; }
         public event EventHandler? TestResultImportStarted;
         public event EventHandler<TestResultImportFinishedEventArgs>? TestResultImportFinished;
         public event EventHandler? TestResultImportFailed;
-
+        private int totalOfImportedTestCases = 0;
         private ITestResultProvider TestResultProvider;
+        private WindchillConnector windchillConnector;
 
         public TestResultImporter(ITestResultProvider testResultProvider)
         {
             TestResultProvider = testResultProvider;
         }
 
-        public TestResultImporter()
+        public TestResultImporter(WindchillConfiguration configuration, UserCredentials credentials)
         {
-
+            Configuration = configuration;
+            Credentials = credentials;
+            windchillConnector = new WindchillConnector(configuration, credentials);
         }
-        public void SyncResultsToWindchill(IList<TestCase> testResults)
+
+        public void SyncResultsToWindchill(IList<TestCase> testResults, string sessionID)
         {
             // Todo
             // 1. Alle IDs aus der Liste von Ergebnisse auslesen
@@ -37,18 +45,19 @@ namespace ResultBridge.Core.Core
             foreach (var testCase in testResults)
             {
                 TestResultImportStarted?.Invoke(this, EventArgs.Empty);
-                string name = testCase.Name;
-                string description = testCase.Description;
-                bool wasExecuted = testCase.WasExecuted;
-                TestResult testResult = testCase.TestResult;
-                bool wasSuccessful = testCase.WasSuccessful;
 
-                foreach (var category in testCase.Categories)
-                {
-                    string testCaseID = category.Name;
-                }
+                string testCaseId = GetTestCaseIdFromCategories(testCase.Categories);
+                windchillConnector.SetTestResultFor(testCaseId, testCase.Successful, sessionID);
+
                 TestResultImportFinished?.Invoke(this, new TestResultImportFinishedEventArgs(0));
+                totalOfImportedTestCases++;
             }
+        }
+
+        private static string GetTestCaseIdFromCategories(IList<Category> categoriesOfTestCase)
+        {
+            var testCaseName = categoriesOfTestCase.First(category => category.Name.StartsWith("TcID_"));
+            return testCaseName.Name.Replace("TcID_", "");
         }
     }
 }

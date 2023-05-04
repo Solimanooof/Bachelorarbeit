@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
 using ResultBridge.Core.Core;
+using ResultBridge.Core.Core.TestImport;
+using ResultBridge.Core.Core.TestImport.Impl;
 using ResultBridgeCore.Tests.Utils;
 
 namespace ResultBridgeCore.Tests.Core

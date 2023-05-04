@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 using ResultBridge.Core.Core;
-using ResultBridge.Core.Model;
 using ResultBridge.Core.Model.Import;
 using ResultBridgeCore.Tests.Utils;
 using System.IO;
+using ResultBridge.Core.Core.TestImport.Impl;
+using ResultBridge.Core.Model.TestResults;
 
 namespace ResultBridgeCore.Tests.Core
 {

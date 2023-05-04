@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using ResultBridge.Core.Model;
 using ResultBridge.Core.Model.Import;
+using ResultBridge.Core.Model.TestResults;
 
-namespace ResultBridge.Core.Core
+namespace ResultBridge.Core.Core.TestImport
 {
     /// <summary>
     /// Transforms file content of TestResults.xml

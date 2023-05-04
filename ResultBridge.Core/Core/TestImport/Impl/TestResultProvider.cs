@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
-using ResultBridge.Core.Model;
 using ResultBridge.Core.Model.Import;
+using ResultBridge.Core.Model.TestResults;
 
-namespace ResultBridge.Core.Core
+namespace ResultBridge.Core.Core.TestImport.Impl
 {
     public class TestResultProvider : ITestResultProvider
     {

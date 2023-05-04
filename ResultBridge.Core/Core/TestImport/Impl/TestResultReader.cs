@@ -1,9 +1,7 @@
-﻿using System;
-using System.IO;
-using System.Xml.Serialization;
+﻿using System.IO;
 using ResultBridge.Core.Model.Import;
 
-namespace ResultBridge.Core.Core
+namespace ResultBridge.Core.Core.TestImport.Impl
 {
     public class TestResultReader : ITestResultReader
     {
