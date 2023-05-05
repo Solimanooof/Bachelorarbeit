@@ -34,11 +34,26 @@ namespace ResultBridge.Core.Model.TestResults
         [XmlAttribute("result")]
         public TestResult TestResult { get; set; }
 
-        [XmlAttribute("success")]
+        [XmlIgnore]
         public string Successful { get; set; }
-
+        [XmlAttribute("success")]
+        public string ResultOfTestCase
+        {
+            get => Successful.ToString();
+            set
+            {
+                if (value is "True")
+                {
+                    Successful = "Passed";
+                }
+                else if (value is "False")
+                {
+                    Successful = "Failed";
+                }
+            }
+        }
         [XmlElement("categories")]
-        public List<Category> Categories { get; set; }
+        public List<Categories> Categories { get; set; }
 
         public TestCase()
         {

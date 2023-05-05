@@ -1,15 +1,24 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
 
-namespace ResultBridge.Core.Model.TestResults
+namespace ResultBridge.Core.Model.ResultsFile
 {
-    [XmlRoot(elementName: "categories")]
-    public class Category
+    [XmlRoot(elementName: "category")]
+    public class category
     {
         [XmlAttribute("name")]
         public string Name { get; set; }
-
-        public Category()
+        public category()
         {
+        }
+
+        public category(string name)
+        {
+            Name = name;
         }
     }
 }

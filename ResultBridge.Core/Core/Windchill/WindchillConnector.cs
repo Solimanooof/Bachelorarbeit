@@ -41,7 +41,7 @@ public class WindchillConnector : IWindchillConnector
     }
 
 
-    public void Connect(string userName, string password)
+    public void Connect()
     {
         string connectCommand = windchillCommandBuilder.BuildConnectCommand();
         var processFinishedInfo = ExecuteImProcess(connectCommand);

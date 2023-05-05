@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using ResultBridge.Core.Core.Windchill;
 using ResultBridge.Core.Model;
+using ResultBridge.Core.Model.ResultsFile;
 using ResultBridge.Core.Model.TestResults;
 using ResultBridge.Core.Model.Windchill;
+using TestCase = ResultBridge.Core.Model.TestResults.TestCase;
 
 namespace ResultBridge.Core.Core.TestImport.Impl
 {
@@ -31,6 +34,12 @@ namespace ResultBridge.Core.Core.TestImport.Impl
             windchillConnector = new WindchillConnector(configuration, credentials);
         }
 
+        public TestResultImporter(WindchillConfiguration configuration, UserCredentials credentials, ITestResultProvider testResultProvider)
+        {
+            Configuration = configuration;
+            Credentials = credentials;
+            windchillConnector = new WindchillConnector(configuration, credentials);
+        }
         public void SyncResultsToWindchill(IList<TestCase> testResults, string sessionID)
         {
             // Todo
@@ -42,9 +51,13 @@ namespace ResultBridge.Core.Core.TestImport.Impl
             //    2.2 Prüfen, ob es beim Import einen Fehler gab
             // 3. Auswerten, ob Import erfolgreich oder nicht
 
+
+
+
             foreach (var testCase in testResults)
             {
                 TestResultImportStarted?.Invoke(this, EventArgs.Empty);
+
 
                 string testCaseId = GetTestCaseIdFromCategories(testCase.Categories);
                 windchillConnector.SetTestResultFor(testCaseId, testCase.Successful, sessionID);
@@ -54,10 +67,19 @@ namespace ResultBridge.Core.Core.TestImport.Impl
             }
         }
 
-        private static string GetTestCaseIdFromCategories(IList<Category> categoriesOfTestCase)
+        private static string GetTestCaseIdFromCategories(IList<Categories> categories)
         {
-            var testCaseName = categoriesOfTestCase.First(category => category.Name.StartsWith("TcID_"));
-            return testCaseName.Name.Replace("TcID_", "");
+            string testCaseID = " ";
+
+            foreach (var categeories in categories)
+            {
+                List<category> category = categeories.Category;
+                var testCaseName = category.First(category => category.Name.StartsWith("TcID_"));
+                testCaseID = testCaseName.Name.Replace("TcID_", "");
+
+            }
+
+            return testCaseID;
         }
     }
 }

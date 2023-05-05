@@ -1,47 +1,55 @@
-﻿//using NUnit.Framework;
-//using ResultBridge.Core.Core;
-//using ResultBridge.Core.Model.Import;
-//using System;
-//using System.Collections.Generic;
-//using System.IO;
-//using ResultBridge.Core.Core.TestImport;
-//using ResultBridge.Core.Core.TestImport.Impl;
-//using ResultBridgeCore.Tests.Utils;
-//using ResultBridge.Core.Model.TestResults;
+﻿using NUnit.Framework;
+using ResultBridge.Core.Core;
+using ResultBridge.Core.Model.Import;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using ResultBridge.Core.Core.TestImport;
+using ResultBridge.Core.Core.TestImport.Impl;
+using ResultBridgeCore.Tests.Utils;
+using ResultBridge.Core.Model.TestResults;
+using ResultBridge.Core.Core.Windchill;
+using ResultBridge.Core.Model.Windchill;
+using ResultBridge.Core.Model;
 
-//namespace ResultBridgeCore.Tests.Core
-//{
-//    [TestFixture]
-//    public class TestResultImporterTests
-//    {
-//        [Test]
-//        public void SyncResultsToWindchill_StateUnderTest_ExpectedBehavior()
-//        {
-//            // Arrange
-//            string testResultsFilePath = FileHelper.ResolveFileFromTestResources("TestResults.xml");
-//            var provider = new TestResultProvider();
-//            TestResultFile testResultFile = new TestResultFile(Path.GetFullPath(testResultsFilePath), Path.GetFileName(testResultsFilePath));
+namespace ResultBridgeCore.Tests.Core
+{
+    [TestFixture]
+    public class TestResultImporterTests
+    {
+        [Test]
+        public void SyncResultsToWindchill_StateUnderTest_ExpectedBehavior()
+        {
+            var windchillConfiguration = new WindchillConfiguration("emea-integrity.karlstorz.com", 7001);
+            var userCredentials = new UserCredentials("soabdelwah", "12363");
+            var windchillConnector = new WindchillConnector(windchillConfiguration, userCredentials);
 
-//            ITestResultProvider testResultProvider = new TestResultProvider();
+            // Arrange
+            string testResultsFilePath = FileHelper.ResolveFileFromTestResources("TestResults.xml");
+            var provider = new TestResultProvider();
+            TestResultFile testResultFile = new TestResultFile(Path.GetFullPath(testResultsFilePath), Path.GetFileName(testResultsFilePath));
 
-//            var testResultImporter = new TestResultImporter(testResultProvider);
-//            TestSuite testResultsSuiteFromProvider = testResultProvider.CreateTestResultsFrom(testResultFile);
-//            List<Result> results = testResultsSuiteFromProvider.Results;
-//            IList<TestCase> testCases = new List<TestCase>();
-//            foreach (var result in results)
-//            {
-//                testCases = result.TestCases;
-//            }
+            ITestResultProvider testResultProvider = new TestResultProvider();
 
-//            bool importStartedevent = false;
-//            testResultImporter.TestResultImportStarted += (sender, args) => importStartedevent = true;
+            var testResultImporter = new TestResultImporter(windchillConfiguration, userCredentials, testResultProvider);
 
-//            // Act
-//            testResultImporter.SyncResultsToWindchill(testCases);
+            TestSuite testResultsSuiteFromProvider = testResultProvider.CreateTestResultsFrom(testResultFile);
+            List<Result> results = testResultsSuiteFromProvider.Results;
+            IList<TestCase> testCases = new List<TestCase>();
+            foreach (var result in results)
+            {
+                testCases = result.TestCases;
+            }
 
-//            // Assert
-//            Assert.IsTrue(importStartedevent);
-//            Assert.That(testCases.Count > 1);
-//        }
-//    }
-//}
+            bool importStartedevent = false;
+            testResultImporter.TestResultImportStarted += (sender, args) => importStartedevent = true;
+
+            // Act
+            testResultImporter.SyncResultsToWindchill(testCases, "1380943");
+
+            // Assert
+            Assert.IsTrue(importStartedevent);
+            Assert.That(testCases.Count > 1);
+        }
+    }
+}

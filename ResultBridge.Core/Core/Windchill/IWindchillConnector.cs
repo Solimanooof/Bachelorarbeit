@@ -13,7 +13,7 @@ public interface IWindchillConnector
     public int Port { get; set; }
 
     bool IsConnected();
-    void Connect(string userName, string password);
+    void Connect();
     void SetTestResultFor(string caseId, string result, string sessionId);
     void Disconnect();
 }

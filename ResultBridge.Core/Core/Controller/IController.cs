@@ -21,5 +21,6 @@ namespace ResultBridge.Core.Core.Controller
 
         //// deliver the testFileResult to Provider and get the testSuit
         //public TestSuite GeTestSuite(TestResultFile testResultFile);
+        void RunImport(string resultFileName, string sessionId);
     }
 }
