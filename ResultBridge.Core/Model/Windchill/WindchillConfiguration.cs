@@ -1,6 +1,12 @@
 ﻿namespace ResultBridge.Core.Model.Windchill;
 
-public class WindchillConfiguration
+public interface IWindchillConfiguration
+{
+    public string HostName { get; set; }
+    public int Port { get; set; }
+}
+
+public class WindchillConfiguration : IWindchillConfiguration
 {
     public WindchillConfiguration(string hostName, int port)
     {
@@ -8,6 +14,6 @@ public class WindchillConfiguration
         Port = port;
     }
 
-    public string HostName { get; }
-    public int Port { get; }
+    public string HostName { get; set; }
+    public int Port { get; set; }
 }

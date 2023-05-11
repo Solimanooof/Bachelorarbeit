@@ -1,16 +1,16 @@
-﻿<Window x:Class="Result_to_WindChill.Set_Results_in_WindChill"
+﻿<Window  x:Class="Result_to_WindChill.ImportPage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Result_to_WindChill"
         mc:Ignorable="d"
-        Title="Set_Results_in_WindChill" Height="600" Width="800" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="ImportPage" Height="600" Width="800" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Grid Height="600" Width="800">
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="48" Width="423" FontSize="36" Margin="111,40,0,0"><Run Language="de-de" Text="Send Results to WindChill"/></TextBlock>
         <Ellipse HorizontalAlignment="Left" Height="76" Margin="561,26,0,0" Stroke="Black" VerticalAlignment="Top" Width="131" RenderTransformOrigin="2.524,0.065">
             <Ellipse.Fill>
-                <ImageBrush ImageSource="/WindChillIcon1.PNG"/>
+                <ImageBrush ImageSource="/WindChillLogo.PNG"/>
             </Ellipse.Fill>
         </Ellipse>
         <Ellipse HorizontalAlignment="Left" Height="93" Margin="335,154,0,0" Stroke="Black" VerticalAlignment="Top" Width="122">
@@ -18,16 +18,17 @@
                 <ImageBrush ImageSource="/SuccessIcon.PNG"/>
             </Ellipse.Fill>
         </Ellipse>
-        <TextBox x:Name="serverTextBox" HorizontalAlignment="Left" Margin="277,335,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="282" Height="27" Background="#FFF3EEEE" Text="XML Path"/>
-        <TextBlock HorizontalAlignment="Left" Margin="350,389,0,0" TextWrapping="Wrap" Text="Send the Results" VerticalAlignment="Top" Width="114" FontSize="14" FontWeight="Bold" Foreground="White"/>
-        <TextBlock HorizontalAlignment="Left" Margin="181,445,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="145" Width="369" FontWeight="Bold" Text="Reports:"/>
-        <Image HorizontalAlignment="Left" Height="23" Margin="766,10,0,0" VerticalAlignment="Top" Width="19" Source="/closeIcon.PNG"/>
-        <Button Content="" HorizontalAlignment="Left" Margin="169,335,0,0" VerticalAlignment="Top" Width="92" Height="27">
+        <TextBox x:Name="xmlFilePathTextBox" HorizontalAlignment="Left" Margin="224,311,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="282" Height="27" Background="#FFF3EEEE" />
+        <TextBlock x:Name="reportesTextBlock" HorizontalAlignment="Left" Margin="181,445,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="145" Width="369" FontWeight="Bold" Text="Reports:"/>
+        <Button x:Name="btnUploadFile" Content="" HorizontalAlignment="Left" Margin="139,311,0,0" VerticalAlignment="Top" Width="92" Height="27" Click="btnUploadFile_Click" >
             <Button.Background>
-                <ImageBrush ImageSource="/UploadIcon.PNG"/>
+                <ImageBrush ImageSource="UploadIcon.PNG"/>
             </Button.Background>
         </Button>
-        <Button  Content="Set the Results" HorizontalAlignment="Left" Margin="296,389,0,0" VerticalAlignment="Top" Width="247" Height="27" Background="#FF5B78ED" Foreground="White" FontSize="14" FontWeight="Bold"/>
+        <Button x:Name="btnSetResultsInWindChill"  Content="Set the Results" HorizontalAlignment="Left" Margin="425,380,0,0" VerticalAlignment="Top" Width="247" Height="27" Background="#FF5B78ED" Foreground="White" FontSize="14" FontWeight="Bold" Click="btnSetResultsInWindChill_Click" />
+        <TextBox x:Name="sessionIdTextBox" HorizontalAlignment="Left" Margin="656,311,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Height="27" Background="#FFF3EEEE" />
+        <Label Content="Session ID" HorizontalAlignment="Left" Margin="561,312,0,0" VerticalAlignment="Top" Width="80" Height="28" Background="#FFB3AFAF"/>
+        <Button x:Name="btnClose"  Content="Cancel and Close" HorizontalAlignment="Left" Margin="181,380,0,0" VerticalAlignment="Top" Width="158" Height="27" Background="#FF5B78ED" Foreground="White" FontSize="14" FontWeight="Bold" Click="btnClose_Click" />
 
 
     </Grid>

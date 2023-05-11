@@ -12,7 +12,7 @@
 
         public TestResultFile(string filePath)
         {
-
+            FilePath = filePath;
         }
         public TestResultFile(string filePath, string name)
         {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using ResultBridge.Core.Core.Windchill;
 using ResultBridge.Core.Model;
@@ -13,33 +14,35 @@ namespace ResultBridge.Core.Core.TestImport.Impl
 {
     public class TestResultImporter : ITestResultImporter
     {
-        public WindchillConfiguration Configuration { get; }
-        public UserCredentials Credentials { get; }
+        //    public WindchillConfiguration Configuration { get; }
+        //public UserCredentials Credentials { get; }
         public event EventHandler? TestResultImportStarted;
         public event EventHandler<TestResultImportFinishedEventArgs>? TestResultImportFinished;
         public event EventHandler? TestResultImportFailed;
         private int totalOfImportedTestCases = 0;
-        private ITestResultProvider TestResultProvider;
-        private WindchillConnector windchillConnector;
+        private ITestResultProvider _testResultProvider;
+        public IWindchillConnector _windchillConnector;
 
-        public TestResultImporter(ITestResultProvider testResultProvider)
+        public TestResultImporter(ITestResultProvider testResultProvider, IWindchillConnector windchillConnector)
         {
-            TestResultProvider = testResultProvider;
+            _testResultProvider = testResultProvider;
+            _windchillConnector = windchillConnector;
+
         }
 
-        public TestResultImporter(WindchillConfiguration configuration, UserCredentials credentials)
-        {
-            Configuration = configuration;
-            Credentials = credentials;
-            windchillConnector = new WindchillConnector(configuration, credentials);
-        }
+        //public TestResultImporter(WindchillConfiguration configuration, UserCredentials credentials)
+        //{
+        //    Configuration = configuration;
+        //    Credentials = credentials;
+        //    windchillConnector = new WindchillConnector(configuration, credentials);
+        //}
 
-        public TestResultImporter(WindchillConfiguration configuration, UserCredentials credentials, ITestResultProvider testResultProvider)
-        {
-            Configuration = configuration;
-            Credentials = credentials;
-            windchillConnector = new WindchillConnector(configuration, credentials);
-        }
+        //public TestResultImporter(WindchillConfiguration configuration, UserCredentials credentials, ITestResultProvider testResultProvider)
+        //{
+        //    Configuration = configuration;
+        //    Credentials = credentials;
+        //    windchillConnector = new WindchillConnector(configuration, credentials);
+        //}
         public void SyncResultsToWindchill(IList<TestCase> testResults, string sessionID)
         {
             // Todo
@@ -58,14 +61,19 @@ namespace ResultBridge.Core.Core.TestImport.Impl
             {
                 TestResultImportStarted?.Invoke(this, EventArgs.Empty);
 
+                //var windchillConnector = new WindchillConnector(Configuration, Credentials);
 
                 string testCaseId = GetTestCaseIdFromCategories(testCase.Categories);
-                windchillConnector.SetTestResultFor(testCaseId, testCase.Successful, sessionID);
+                _windchillConnector.SetTestResultFor(testCaseId, testCase.Successful, sessionID);
 
-                TestResultImportFinished?.Invoke(this, new TestResultImportFinishedEventArgs(0));
-                totalOfImportedTestCases++;
+                _windchillConnector.OnTestResultImported += (sender, args) => { totalOfImportedTestCases++; };
+
+
             }
+            TestResultImportFinished?.Invoke(this, new TestResultImportFinishedEventArgs(totalOfImportedTestCases));
         }
+
+
 
         private static string GetTestCaseIdFromCategories(IList<Categories> categories)
         {

@@ -21,10 +21,10 @@ public class WindchillConnector : IWindchillConnector
 
     public string HostName { get; set; }
     public int Port { get; set; }
-    public string UserName { get; }
-    public string Password { get; }
+    public string UserName { get; set; }
+    public string Password { get; set; }
 
-    public WindchillConnector(WindchillConfiguration configuration, UserCredentials userCredentials)
+    public WindchillConnector(IWindchillConfiguration configuration, IUserCredentials userCredentials)
     {
         HostName = configuration.HostName;
         Port = configuration.Port;
@@ -144,5 +144,3 @@ public class WindchillConnector : IWindchillConnector
     }
 }
 
-//sesseion 1380943
-// testcase 1359213

@@ -1,6 +1,13 @@
 ﻿namespace ResultBridge.Core.Core.Windchill;
 
-public class WindchillCommandBuilder
+public interface IWindchillCommandBuilder
+{
+    public string UserName { get; set; }
+    public string Password { get; set; }
+    public string HostName { get; set; }
+    public int Port { get; set; }
+}
+public class WindchillCommandBuilder : IWindchillCommandBuilder
 {
     public WindchillCommandBuilder(string userName, string password, string hostName, int port)
     {
@@ -10,10 +17,10 @@ public class WindchillCommandBuilder
         Port = port;
     }
 
-    public string UserName { get; }
-    public string Password { get; }
-    public string HostName { get; }
-    public int Port { get; }
+    public string UserName { get; set; }
+    public string Password { get; set; }
+    public string HostName { get; set; }
+    public int Port { get; set; }
 
     public string BuildConnectCommand()
     {

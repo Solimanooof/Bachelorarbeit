@@ -1,35 +1,35 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
-    <RootNamespace>Result_to_WindChill</RootNamespace>
-    <Nullable>enable</Nullable>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net7.0-windows</TargetFramework>
+		<RootNamespace>Result_to_WindChill</RootNamespace>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="closeIcon.PNG" />
-    <None Remove="LogInIcon.PNG" />
-    <None Remove="sendIcon.PNG" />
-    <None Remove="SuccessIcon.PNG" />
-    <None Remove="UploadIcon.PNG" />
-    <None Remove="WindChillIcon1.PNG" />
-    <None Remove="WindChillLogo.PNG" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="LogInIcon.PNG" />
+		<None Remove="UploadIcon.PNG" />
+		<None Remove="WindChillLogo.PNG" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pics\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Pics\" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="closeIcon.PNG" />
-    <Resource Include="LogInIcon.PNG" />
-    <Resource Include="sendIcon.PNG" />
-    <Resource Include="SuccessIcon.PNG" />
-    <Resource Include="UploadIcon.PNG" />
-    <Resource Include="WindChillIcon1.PNG" />
-    <Resource Include="WindChillLogo.PNG" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\ResultBridge.Core\ResultBridge.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="LogInIcon.PNG" />
+		<Resource Include="UploadIcon.PNG" />
+		<Resource Include="WindChillLogo.PNG" />
+		<None Remove="SuccessIcon.PNG" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+		<Resource Include="SuccessIcon.PNG" />
+	</ItemGroup>
 
 </Project>
